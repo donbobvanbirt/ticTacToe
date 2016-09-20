@@ -34,7 +34,7 @@ let App = React.createClass({
       board: newBoard,
       turn: "X",
       playing: true
-    }, () => console.log("bord", this.state.board));
+    });
   },
 
   clickSquare(num) {
@@ -57,8 +57,8 @@ let App = React.createClass({
       })
 
       this.winner(turn);
-      console.log(num, 'square clicked');
-      console.log("state", this.state);
+      // console.log(num, 'square clicked');
+      // console.log("state", this.state);
     }
   },
 
@@ -66,7 +66,7 @@ let App = React.createClass({
     let decaration = winner + " WINS!";
     this.setState({
       playing: false
-    }, () => alert(decaration));
+    }, () => {alert(decaration)});
   },
 
   winner(mark) {
@@ -83,7 +83,6 @@ let App = React.createClass({
         }
       })
       if (win) {
-        console.log(mark, "Wins!");
         over = true;
       }
     }
@@ -97,87 +96,69 @@ let App = React.createClass({
     }
   },
 
+  turn() {
+    let { turn, playing } = this.state;
+    if (playing) {
+      return `${turn} turn`;
+    } else {
+      return '';
+    }
+  },
+
   mark(n) {
     return this.state.board[n];
   },
 
   render() {
-    let { board, turn } = this.state;
+    let { board } = this.state;
 
     return (
 
-      <div className="container">
+      <div className="container" id="gameContainer">
         <h1>Tic Tac Toe</h1>
 
         <button onClick={this.start} className="btn btn-sm btn-defalt">New Game</button>
 
-        <h3>{turn} turn</h3>
+        <h3>{this.turn()}</h3>
 
-        <div className="row">
-          <div className="col-xs-4 panel">
-            <div onClick={() => this.clickSquare(1)} className="square">{this.mark(1)}</div>
+          <div className="row">
+            <div className="col-xs-4 panel">
+              <div onClick={() => this.clickSquare(1)} className="square">{this.mark(1)}</div>
+            </div>
+            <div className="col-xs-4 panel">
+              <div onClick={() => this.clickSquare(2)} className="square">{this.mark(2)}</div>
+            </div>
+            <div className="col-xs-4 panel">
+              <div onClick={() => this.clickSquare(3)} className="square">{this.mark(3)}</div>
+            </div>
           </div>
-          <div className="col-xs-4 panel">
-            <div onClick={() => this.clickSquare(2)} className="square">{this.mark(2)}</div>
+          <div className="row">
+            <div className="col-xs-4 panel">
+              <div onClick={() => this.clickSquare(4)} className="square">{this.mark(4)}</div>
+            </div>
+            <div className="col-xs-4 panel">
+              <div onClick={() => this.clickSquare(5)} className="square">{this.mark(5)}</div>
+            </div>
+            <div className="col-xs-4 panel">
+              <div onClick={() => this.clickSquare(6)} className="square">{this.mark(6)}</div>
+            </div>
           </div>
-          <div className="col-xs-4 panel">
-            <div onClick={() => this.clickSquare(3)} className="square">{this.mark(3)}</div>
+          <div className="row">
+            <div className="col-xs-4 panel">
+              <div onClick={() => this.clickSquare(7)} className="square">{this.mark(7)}</div>
+            </div>
+            <div className="col-xs-4 panel">
+              <div onClick={() => this.clickSquare(8)} className="square">{this.mark(8)}</div>
+            </div>
+            <div className="col-xs-4 panel">
+              <div onClick={() => this.clickSquare(9)} className="square">{this.mark(9)}</div>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-4 panel">
-            <div onClick={() => this.clickSquare(4)} className="square">{this.mark(4)}</div>
-          </div>
-          <div className="col-xs-4 panel">
-            <div onClick={() => this.clickSquare(5)} className="square">{this.mark(5)}</div>
-          </div>
-          <div className="col-xs-4 panel">
-            <div onClick={() => this.clickSquare(6)} className="square">{this.mark(6)}</div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-4 panel">
-            <div onClick={() => this.clickSquare(7)} className="square">{this.mark(7)}</div>
-          </div>
-          <div className="col-xs-4 panel">
-            <div onClick={() => this.clickSquare(8)} className="square">{this.mark(8)}</div>
-          </div>
-          <div className="col-xs-4 panel">
-            <div onClick={() => this.clickSquare(9)} className="square">{this.mark(9)}</div>
-          </div>
-        </div>
 
       </div>
     )
   }
 })
-
-// let NewBoard = (props) => {
-//   let board = props.state;
-//
-//   return board.map((row, index) => {
-//     return (
-//
-//         {row.map((square) => {
-//           return (
-//             <div className="col-xs-4 panel">
-//               <div onClick={() => this.clickSquare(1)} className="square"></div>
-//             </div>
-//           )
-//         })}
-//       </div>
-//     )
-//   })
-//
-//   for (let r in board) {
-//     return (
-//       <div className="row">
-//         for (let s in )
-//       </div>
-//     )
-//   }
-//
-// }
 
 ReactDOM.render(
   <App/>,
